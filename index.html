@@ -20,17 +20,8 @@
 <section class="card"><h2>01 · Suara bayi</h2><p class="sub">Rekam suara singkat atau pilih audio dari perangkat.</p>
 <div class="recordbox"><div class="mic" aria-hidden="true">🎙️</div><h3 id="recordTitle">Siap mendengarkan</h3><p id="recordDesc">Gunakan tempat yang cukup tenang. Rekaman tidak dikirim ke server oleh halaman ini.</p><div class="actions"><button id="recordBtn" class="btn primary">● Mulai rekam</button><label class="btn secondary" for="audioFile">↑ Pilih audio</label><input id="audioFile" type="file" accept="audio/*" class="hidden"></div><div id="recordActions" class="actions hidden" style="margin-top:9px"><button id="stopBtn" class="btn danger">■ Berhenti</button><button id="clearBtn" class="btn secondary">Hapus audio</button></div><audio id="audioPreview" class="audio-player hidden" controls></audio><div id="audioStatus" class="small" aria-live="polite">Belum ada audio dipilih.</div></div>
 <div class="notice" style="background:#eef5ff;border-color:#d9e6ff;color:#264a86"><strong>Privasi</strong>Prototype ini memproses rekaman hanya untuk pratinjau di browser. Audio tidak dianalisis oleh model AI dan tidak diunggah.</div></section>
-<section class="card"><h2>02 · Konteks bayi</h2><p class="sub">Informasi ini membantu memilih hal yang perlu diperiksa terlebih dahulu.</p>
-<div class="two"><div class="field"><label for="age">Usia bayi</label><select id="age"><option value="">Pilih usia</option><option value="0-3">0–3 bulan</option><option value="4-6">4–6 bulan</option><option value="7-12">7–12 bulan</option><option value="12+">Di atas 12 bulan</option></select></div><div class="field"><label for="lastFeed">Terakhir menyusu</label><select id="lastFeed"><option value="">Belum diisi</option><option value="under1">Kurang dari 1 jam</option><option value="1to2">1–2 jam lalu</option><option value="over2">Lebih dari 2 jam</option></select></div></div>
-<div class="field"><label for="sleep">Terakhir tidur/bangun</label><select id="sleep"><option value="">Belum diisi</option><option value="recent">Baru bangun</option><option value="awake">Sudah lama terjaga</option><option value="nap">Tanda ingin tidur</option></select></div>
-<div class="field"><label for="diaper">Popok</label><select id="diaper"><option value="">Belum diperiksa</option><option value="clean">Sudah diperiksa, kering/bersih</option><option value="wet">Basah atau kotor</option></select></div>
-<div class="field"><label for="afterFeed">Kondisi setelah menyusu</label><select id="afterFeed"><option value="">Belum diisi</option><option value="burp">Belum bersendawa</option><option value="settled">Tampak nyaman</option><option value="fussy">Masih rewel</option></select></div>
-<label class="checkrow"><input type="checkbox" id="unusual"><span>Tangisan terdengar tidak biasa, sangat lemah, atau sulit ditenangkan.</span></label>
-<button id="analyzeBtn" class="btn primary" style="width:100%;margin-top:16px">Periksa kemungkinan kebutuhan →</button>
-</section>
 </div>
-<section id="result" class="result hidden" aria-live="polite"><div class="result-head"><div id="resultIcon" class="result-icon">💡</div><div><div class="muted">Pemeriksaan berdasarkan konteks · bukan AI audio</div><h3 id="resultTitle">Kemungkinan kebutuhan</h3></div></div><p id="resultIntro" style="margin:10px 0 0"></p><ul id="resultList"></ul><div id="resultSafety" class="notice hidden"></div></section>
-<h2 class="section-title">Cara menggunakan</h2><div class="steps"><article class="step"><span>🎧</span><h3>Rekam atau pilih suara</h3><p>Audio hanya dapat diputar kembali di halaman ini pada versi prototype.</p></article><article class="step"><span>📝</span><h3>Isi konteks sederhana</h3><p>Catat waktu menyusu, tidur, dan kondisi popok untuk membantu menentukan apa yang perlu dicek.</p></article><article class="step"><span>🤱</span><h3>Periksa bayi secara langsung</h3><p>Gunakan saran sebagai daftar pemeriksaan, bukan kepastian tentang penyebab tangisan.</p></article></div>
+<h2 class="section-title">Cara menggunakan</h2><div class="steps"><article class="step"><span>🎧</span><h3>Rekam atau pilih suara</h3><p>Rekam suara singkat atau pilih file audio dari perangkat.</p></article><article class="step"><span>📝</span><h3>Audio saja, tanpa formulir</h3><p>Versi ini belum menganalisis tangisan dengan AI.</p></article><article class="step"><span>🤱</span><h3>Periksa bayi secara langsung</h3><p>Gunakan saran sebagai daftar pemeriksaan, bukan kepastian tentang penyebab tangisan.</p></article></div>
 <div class="notice"><strong>Utamakan keselamatan</strong>Jika bayi kesulitan bernapas, bibir membiru, kejang, sulit dibangunkan, atau tampak sangat sakit, segera cari pertolongan medis. Bayi di bawah 3 bulan dengan suhu 38°C atau lebih perlu penilaian medis segera. Jangan menunda pertolongan demi memakai aplikasi.</div>
 <footer class="footer">BabyCry AI · Prototype open-source · Tidak menggantikan dokter atau pengasuh. Belum menggunakan model klasifikasi tangisan.</footer>
 </div>
@@ -74,25 +65,7 @@ $('clearBtn').addEventListener('click', () => {
   fileInput.value = ''; $('recordTitle').textContent = 'Siap mendengarkan'; $('recordDesc').textContent = 'Gunakan tempat yang cukup tenang. Rekaman tidak dikirim ke server oleh halaman ini.';
   $('audioStatus').textContent = 'Belum ada audio dipilih.'; $('recordBtn').classList.remove('hidden'); $('recordActions').classList.add('hidden');
 });
-$('analyzeBtn').addEventListener('click', () => {
-  const feed = $('lastFeed').value, sleep = $('sleep').value, diaper = $('diaper').value, after = $('afterFeed').value, age = $('age').value, unusual = $('unusual').checked;
-  const checks = [];
-  if (feed === 'over2' || feed === '1to2') checks.push({score:feed==='over2'?3:1,title:'Periksa tanda lapar',icon:'🍼',text:'Tawarkan susu sesuai isyarat lapar dan pola pemberian makan bayi. Jangan memaksa bayi menyusu.'});
-  if (sleep === 'awake' || sleep === 'nap') checks.push({score:2,title:'Periksa tanda mengantuk',icon:'🌙',text:'Kurangi stimulasi, cek tanda lelah, dan coba rutinitas menenangkan yang biasa cocok untuk bayi.'});
-  if (diaper === 'wet') checks.push({score:3,title:'Periksa dan ganti popok',icon:'🧷',text:'Periksa apakah popok basah/kotor dan lihat apakah kulit mengalami iritasi.'});
-  if (after === 'burp') checks.push({score:2,title:'Coba bantu bersendawa',icon:'🤱',text:'Pegang bayi dengan posisi aman dan tegak, lalu tepuk punggung dengan lembut.'});
-  if (after === 'fussy') checks.push({score:1,title:'Periksa kenyamanan bayi',icon:'💙',text:'Cek suhu ruangan, pakaian, posisi, dan coba menenangkan dengan lembut. Tangisan yang menetap perlu diperhatikan.'});
-  if (!checks.length) checks.push({score:0,title:'Periksa kebutuhan dasar satu per satu',icon:'🔎',text:'Cek tanda lapar, popok, suhu, posisi, kelelahan, dan apakah bayi ingin digendong. Belum cukup konteks untuk menentukan prioritas.'});
-  checks.sort((a,b)=>b.score-a.score);
-  $('resultIcon').textContent = unusual ? '⚠️' : checks[0].icon;
-  $('resultTitle').textContent = unusual ? 'Perhatikan tangisan yang tidak biasa' : checks[0].title;
-  $('resultIntro').textContent = unusual ? 'Karena kamu menandai tangisan tidak biasa, jangan mengandalkan hasil aplikasi untuk menilai penyebabnya. Periksa kondisi bayi secara langsung dan hubungi tenaga kesehatan bila khawatir.' : 'Ini adalah daftar pemeriksaan berdasarkan informasi yang kamu isi, bukan prediksi penyebab tangisan dari audio.';
-  const ul = $('resultList'); ul.replaceChildren();
-  checks.forEach(c => {const li=document.createElement('li'); li.textContent=c.text; ul.appendChild(li);});
-  const safety = $('resultSafety'); safety.classList.toggle('hidden', !unusual);
-  if (unusual) { safety.innerHTML = '<strong>Utamakan keselamatan</strong>Jika bayi sulit bernapas, membiru, kejang, sulit dibangunkan, atau tampak sangat sakit, cari pertolongan darurat. Bayi di bawah 3 bulan dengan suhu 38°C atau lebih perlu penilaian medis segera.'; }
-  $('result').classList.remove('hidden'); $('result').scrollIntoView({behavior:'smooth',block:'start'});
-});
+
 })();
 </script>
 </body></html>

@@ -1,0 +1,40 @@
+name: Audit Donate-a-Cry dataset
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout BabyCry AI
+        uses: actions/checkout@v4
+      - name: Checkout public Donate-a-Cry corpus
+        uses: actions/checkout@v4
+        with:
+          repository: gveres/donateacry-corpus
+          ref: master
+          path: external-dataset
+          fetch-depth: 1
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install ffprobe
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+      - name: Run local-style aggregate audit
+        run: |
+          python scripts/audit_donateacry.py external-dataset --output dataset_audit_report.json
+      - name: Upload aggregate report
+        uses: actions/upload-artifact@v4
+        with:
+          name: babycry-dataset-audit
+          path: dataset_audit_report.json
+          if-no-files-found: error
+          retention-days: 14

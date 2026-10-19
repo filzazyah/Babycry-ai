@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f7f8fc">
+<meta name="description" content="BabyCry AI membantu orang tua memeriksa kemungkinan kebutuhan bayi dengan konteks perawatan dan rekaman audio.">
+<title>BabyCry AI — Asisten Orang Tua</title>
+<style>
+:root{--ink:#18243a;--muted:#68758b;--blue:#356ae6;--blue2:#eaf0ff;--mint:#dff7ef;--line:#e4e9f2;--card:#fff;--bg:#f7f8fc;--amber:#fff3d7;--shadow:0 12px 36px rgba(25,45,85,.07)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.5}button,input,select{font:inherit}button{cursor:pointer}.wrap{max-width:1000px;margin:auto;padding:20px 16px 48px}.nav{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:24px}.brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-.03em;font-size:1.2rem}.logo{display:grid;place-items:center;width:42px;height:42px;border-radius:15px;background:#e6edff;font-size:23px}.status{font-size:.78rem;font-weight:700;color:#176b53;background:#e1f7ee;padding:7px 10px;border-radius:99px}.hero{background:linear-gradient(130deg,#182e55,#315eb8 70%,#5889ed);color:white;padding:28px;border-radius:28px;position:relative;overflow:hidden;box-shadow:var(--shadow)}.hero:after{content:"";position:absolute;width:240px;height:240px;border-radius:50%;right:-75px;top:-105px;background:#ffffff12;border:1px solid #ffffff25}.eyebrow{text-transform:uppercase;letter-spacing:.13em;font-size:.72rem;font-weight:800;color:#c9d9ff}.hero h1{font-size:clamp(2rem,5vw,3.3rem);letter-spacing:-.055em;line-height:1.06;max-width:650px;margin:10px 0 14px}.hero p{color:#e2eaff;max-width:620px;margin:0}.hero-foot{display:flex;gap:9px;flex-wrap:wrap;margin-top:22px}.pill{font-size:.8rem;border:1px solid #ffffff35;background:#ffffff12;border-radius:99px;padding:7px 11px}.layout{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(280px,.9fr);gap:18px;margin-top:18px}.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:21px;box-shadow:var(--shadow);min-width:0}.card h2{font-size:1.08rem;margin:0 0 4px;letter-spacing:-.02em}.sub{color:var(--muted);font-size:.88rem;margin:0 0 18px}.recordbox{border:1.5px dashed #cbd6eb;background:#f9fbff;border-radius:18px;padding:22px 16px;text-align:center}.mic{width:68px;height:68px;margin:0 auto 12px;border-radius:23px;display:grid;place-items:center;background:var(--blue2);font-size:30px}.recordbox h3{margin:0 0 5px;font-size:1rem}.recordbox p{margin:0 auto 16px;color:var(--muted);font-size:.85rem;max-width:350px}.actions{display:flex;gap:9px;justify-content:center;flex-wrap:wrap}.btn{border:0;border-radius:12px;padding:11px 15px;font-weight:750;font-size:.88rem;display:inline-flex;align-items:center;justify-content:center;gap:7px}.primary{background:var(--blue);color:white}.secondary{background:#edf1f8;color:var(--ink)}.danger{background:#ffeded;color:#a72e35}.btn:disabled{opacity:.5;cursor:not-allowed}.small{font-size:.78rem;color:var(--muted);margin-top:13px}.audio-player{width:100%;margin-top:14px}.field{display:grid;gap:6px;margin:14px 0}.field label{font-weight:700;font-size:.86rem}.field select,.field input{width:100%;border:1px solid #dce3ef;border-radius:12px;padding:11px 12px;background:#fff;color:var(--ink)}.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}.checkrow{display:flex;align-items:flex-start;gap:10px;border:1px solid var(--line);border-radius:13px;padding:11px;margin-top:9px;font-size:.87rem}.checkrow input{margin-top:5px;accent-color:var(--blue)}.result{margin-top:18px;border-radius:20px;border:1px solid #dbe5ff;background:#f3f6ff;padding:19px}.result-head{display:flex;align-items:center;gap:10px}.result-icon{width:43px;height:43px;background:white;border-radius:14px;display:grid;place-items:center;font-size:23px}.result h3{margin:0;font-size:1rem}.result .muted{color:var(--muted);font-size:.83rem}.result ul{padding-left:20px;margin:12px 0 0;font-size:.88rem}.notice{background:var(--amber);border:1px solid #f3dfa7;border-radius:16px;padding:14px;font-size:.83rem;color:#684b12;margin-top:16px}.notice strong{display:block;margin-bottom:3px}.section-title{font-size:1.25rem;letter-spacing:-.03em;margin:26px 0 12px}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.step{background:white;border:1px solid var(--line);border-radius:18px;padding:16px}.step span{font-size:1.4rem}.step h3{font-size:.92rem;margin:8px 0 5px}.step p{color:var(--muted);font-size:.82rem;margin:0}.footer{margin-top:26px;color:var(--muted);font-size:.78rem;text-align:center}.hidden{display:none!important}
+@media(max-width:740px){.layout{grid-template-columns:1fr}.hero{padding:23px;border-radius:23px}.card{padding:17px}.steps{grid-template-columns:1fr}.wrap{padding:15px 12px 34px}.nav{margin-bottom:17px}.two{gap:9px}}@media(prefers-reduced-motion:no-preference){.btn{transition:transform .15s,opacity .15s}.btn:active{transform:scale(.98)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="nav"><div class="brand"><div class="logo" aria-hidden="true">🍼</div><span>BabyCry <span style="color:var(--blue)">AI</span></span></div><span class="status">● Prototype awal</span></header>
+<section class="hero"><div class="eyebrow">Teman memahami si kecil</div><h1>Tangisan punya cerita.<br>Mulai dengan memahami.</h1><p>Catat suara dan kondisi bayi untuk membantu memeriksa kemungkinan kebutuhan berikutnya. Hasil saat ini berbasis konteks yang kamu isi, belum merupakan prediksi AI dari audio.</p><div class="hero-foot"><span class="pill">🔒 Audio tetap di perangkat</span><span class="pill">📱 Dirancang untuk HP</span><span class="pill">💙 Bukan alat diagnosis</span></div></section>
+<div class="layout">
+<section class="card"><h2>01 · Suara bayi</h2><p class="sub">Rekam suara singkat atau pilih audio dari perangkat.</p>
+<div class="recordbox"><div class="mic" aria-hidden="true">🎙️</div><h3 id="recordTitle">Siap mendengarkan</h3><p id="recordDesc">Gunakan tempat yang cukup tenang. Rekaman tidak dikirim ke server oleh halaman ini.</p><div class="actions"><button id="recordBtn" class="btn primary">● Mulai rekam</button><label class="btn secondary" for="audioFile">↑ Pilih audio</label><input id="audioFile" type="file" accept="audio/*" class="hidden"></div><div id="recordActions" class="actions hidden" style="margin-top:9px"><button id="stopBtn" class="btn danger">■ Berhenti</button><button id="clearBtn" class="btn secondary">Hapus audio</button></div><audio id="audioPreview" class="audio-player hidden" controls></audio><div id="audioStatus" class="small" aria-live="polite">Belum ada audio dipilih.</div></div>
+<div class="notice" style="background:#eef5ff;border-color:#d9e6ff;color:#264a86"><strong>Privasi</strong>Prototype ini memproses rekaman hanya untuk pratinjau di browser. Audio tidak dianalisis oleh model AI dan tidak diunggah.</div></section>
+<section class="card"><h2>02 · Konteks bayi</h2><p class="sub">Informasi ini membantu memilih hal yang perlu diperiksa terlebih dahulu.</p>
+<div class="two"><div class="field"><label for="age">Usia bayi</label><select id="age"><option value="">Pilih usia</option><option value="0-3">0–3 bulan</option><option value="4-6">4–6 bulan</option><option value="7-12">7–12 bulan</option><option value="12+">Di atas 12 bulan</option></select></div><div class="field"><label for="lastFeed">Terakhir menyusu</label><select id="lastFeed"><option value="">Belum diisi</option><option value="under1">Kurang dari 1 jam</option><option value="1to2">1–2 jam lalu</option><option value="over2">Lebih dari 2 jam</option></select></div></div>
+<div class="field"><label for="sleep">Terakhir tidur/bangun</label><select id="sleep"><option value="">Belum diisi</option><option value="recent">Baru bangun</option><option value="awake">Sudah lama terjaga</option><option value="nap">Tanda ingin tidur</option></select></div>
+<div class="field"><label for="diaper">Popok</label><select id="diaper"><option value="">Belum diperiksa</option><option value="clean">Sudah diperiksa, kering/bersih</option><option value="wet">Basah atau kotor</option></select></div>
+<div class="field"><label for="afterFeed">Kondisi setelah menyusu</label><select id="afterFeed"><option value="">Belum diisi</option><option value="burp">Belum bersendawa</option><option value="settled">Tampak nyaman</option><option value="fussy">Masih rewel</option></select></div>
+<label class="checkrow"><input type="checkbox" id="unusual"><span>Tangisan terdengar tidak biasa, sangat lemah, atau sulit ditenangkan.</span></label>
+<button id="analyzeBtn" class="btn primary" style="width:100%;margin-top:16px">Periksa kemungkinan kebutuhan →</button>
+</section>
+</div>
+<section id="result" class="result hidden" aria-live="polite"><div class="result-head"><div id="resultIcon" class="result-icon">💡</div><div><div class="muted">Pemeriksaan berdasarkan konteks · bukan AI audio</div><h3 id="resultTitle">Kemungkinan kebutuhan</h3></div></div><p id="resultIntro" style="margin:10px 0 0"></p><ul id="resultList"></ul><div id="resultSafety" class="notice hidden"></div></section>
+<h2 class="section-title">Cara menggunakan</h2><div class="steps"><article class="step"><span>🎧</span><h3>Rekam atau pilih suara</h3><p>Audio hanya dapat diputar kembali di halaman ini pada versi prototype.</p></article><article class="step"><span>📝</span><h3>Isi konteks sederhana</h3><p>Catat waktu menyusu, tidur, dan kondisi popok untuk membantu menentukan apa yang perlu dicek.</p></article><article class="step"><span>🤱</span><h3>Periksa bayi secara langsung</h3><p>Gunakan saran sebagai daftar pemeriksaan, bukan kepastian tentang penyebab tangisan.</p></article></div>
+<div class="notice"><strong>Utamakan keselamatan</strong>Jika bayi kesulitan bernapas, bibir membiru, kejang, sulit dibangunkan, atau tampak sangat sakit, segera cari pertolongan medis. Bayi di bawah 3 bulan dengan suhu 38°C atau lebih perlu penilaian medis segera. Jangan menunda pertolongan demi memakai aplikasi.</div>
+<footer class="footer">BabyCry AI · Prototype open-source · Tidak menggantikan dokter atau pengasuh. Belum menggunakan model klasifikasi tangisan.</footer>
+</div>
+<script>
+(() => {
+const $ = id => document.getElementById(id);
+let recorder = null, stream = null, chunks = [], audioUrl = null;
+const fileInput = $('audioFile'), audio = $('audioPreview');
+function setAudio(blob, name) {
+  if (audioUrl) URL.revokeObjectURL(audioUrl);
+  audioUrl = URL.createObjectURL(blob); audio.src = audioUrl; audio.classList.remove('hidden');
+  $('audioStatus').textContent = name + ' · ' + (blob.size/1024).toFixed(0) + ' KB';
+  $('recordTitle').textContent = 'Audio siap diputar'; $('recordDesc').textContent = 'Kamu bisa memutar rekaman untuk memeriksa kualitas suaranya.';
+  $('recordActions').classList.remove('hidden'); $('recordBtn').classList.add('hidden');
+}
+$('recordBtn').addEventListener('click', async () => {
+  if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia || !window.MediaRecorder) {
+    $('audioStatus').textContent = 'Perekaman tidak didukung browser ini. Coba Chrome terbaru dan pastikan halaman memakai HTTPS, atau pilih file audio.';
+    return;
+  }
+  try {
+    stream = await navigator.mediaDevices.getUserMedia({audio:true});
+    recorder = new MediaRecorder(stream); chunks = [];
+    recorder.addEventListener('dataavailable', e => { if (e.data.size) chunks.push(e.data); });
+    recorder.addEventListener('stop', () => {
+      if (chunks.length) setAudio(new Blob(chunks, {type:recorder.mimeType || 'audio/webm'}), 'Rekaman bayi');
+      stream.getTracks().forEach(t => t.stop()); stream = null;
+    });
+    recorder.start(); $('recordBtn').classList.add('hidden'); $('recordActions').classList.remove('hidden');
+    $('stopBtn').classList.remove('hidden'); $('clearBtn').classList.add('hidden');
+    $('recordTitle').textContent = 'Sedang merekam…'; $('recordDesc').textContent = 'Dekatkan perangkat dengan aman, jangan letakkan ponsel di dalam boks atau dekat wajah bayi.';
+    $('audioStatus').textContent = 'Mikrofon aktif. Tekan Berhenti setelah selesai.';
+  } catch(err) { $('audioStatus').textContent = 'Akses mikrofon gagal atau ditolak. Periksa izin mikrofon browser.'; }
+});
+$('stopBtn').addEventListener('click', () => { if (recorder && recorder.state !== 'inactive') recorder.stop(); $('stopBtn').classList.add('hidden'); $('clearBtn').classList.remove('hidden'); });
+fileInput.addEventListener('change', () => { const f = fileInput.files && fileInput.files[0]; if (f) { setAudio(f, f.name); $('stopBtn').classList.add('hidden'); $('clearBtn').classList.remove('hidden'); } });
+$('clearBtn').addEventListener('click', () => {
+  if (recorder && recorder.state !== 'inactive') recorder.stop();
+  if (stream) stream.getTracks().forEach(t => t.stop()); stream = null;
+  if (audioUrl) URL.revokeObjectURL(audioUrl); audioUrl = null; audio.removeAttribute('src'); audio.load(); audio.classList.add('hidden');
+  fileInput.value = ''; $('recordTitle').textContent = 'Siap mendengarkan'; $('recordDesc').textContent = 'Gunakan tempat yang cukup tenang. Rekaman tidak dikirim ke server oleh halaman ini.';
+  $('audioStatus').textContent = 'Belum ada audio dipilih.'; $('recordBtn').classList.remove('hidden'); $('recordActions').classList.add('hidden');
+});
+$('analyzeBtn').addEventListener('click', () => {
+  const feed = $('lastFeed').value, sleep = $('sleep').value, diaper = $('diaper').value, after = $('afterFeed').value, age = $('age').value, unusual = $('unusual').checked;
+  const checks = [];
+  if (feed === 'over2' || feed === '1to2') checks.push({score:feed==='over2'?3:1,title:'Periksa tanda lapar',icon:'🍼',text:'Tawarkan susu sesuai isyarat lapar dan pola pemberian makan bayi. Jangan memaksa bayi menyusu.'});
+  if (sleep === 'awake' || sleep === 'nap') checks.push({score:2,title:'Periksa tanda mengantuk',icon:'🌙',text:'Kurangi stimulasi, cek tanda lelah, dan coba rutinitas menenangkan yang biasa cocok untuk bayi.'});
+  if (diaper === 'wet') checks.push({score:3,title:'Periksa dan ganti popok',icon:'🧷',text:'Periksa apakah popok basah/kotor dan lihat apakah kulit mengalami iritasi.'});
+  if (after === 'burp') checks.push({score:2,title:'Coba bantu bersendawa',icon:'🤱',text:'Pegang bayi dengan posisi aman dan tegak, lalu tepuk punggung dengan lembut.'});
+  if (after === 'fussy') checks.push({score:1,title:'Periksa kenyamanan bayi',icon:'💙',text:'Cek suhu ruangan, pakaian, posisi, dan coba menenangkan dengan lembut. Tangisan yang menetap perlu diperhatikan.'});
+  if (!checks.length) checks.push({score:0,title:'Periksa kebutuhan dasar satu per satu',icon:'🔎',text:'Cek tanda lapar, popok, suhu, posisi, kelelahan, dan apakah bayi ingin digendong. Belum cukup konteks untuk menentukan prioritas.'});
+  checks.sort((a,b)=>b.score-a.score);
+  $('resultIcon').textContent = unusual ? '⚠️' : checks[0].icon;
+  $('resultTitle').textContent = unusual ? 'Perhatikan tangisan yang tidak biasa' : checks[0].title;
+  $('resultIntro').textContent = unusual ? 'Karena kamu menandai tangisan tidak biasa, jangan mengandalkan hasil aplikasi untuk menilai penyebabnya. Periksa kondisi bayi secara langsung dan hubungi tenaga kesehatan bila khawatir.' : 'Ini adalah daftar pemeriksaan berdasarkan informasi yang kamu isi, bukan prediksi penyebab tangisan dari audio.';
+  const ul = $('resultList'); ul.replaceChildren();
+  checks.forEach(c => {const li=document.createElement('li'); li.textContent=c.text; ul.appendChild(li);});
+  const safety = $('resultSafety'); safety.classList.toggle('hidden', !unusual);
+  if (unusual) { safety.innerHTML = '<strong>Utamakan keselamatan</strong>Jika bayi sulit bernapas, membiru, kejang, sulit dibangunkan, atau tampak sangat sakit, cari pertolongan darurat. Bayi di bawah 3 bulan dengan suhu 38°C atau lebih perlu penilaian medis segera.'; }
+  $('result').classList.remove('hidden'); $('result').scrollIntoView({behavior:'smooth',block:'start'});
+});
+})();
+</script>
+</body></html>
